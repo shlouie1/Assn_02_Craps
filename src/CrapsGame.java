@@ -16,13 +16,14 @@ public class CrapsGame {
         boolean playAgain = true;
         String userAnswer = "";
 
-        //randomize dice and get the sum
-        die1 = rand.nextInt(1,7);
-        die2 = rand.nextInt(1,7);
-        dieSum = die1 + die2;
 
         //logic for computing and outputting results of rolls
         do {
+            //randomize dice and get the sum
+            die1 = rand.nextInt(1,7);
+            die2 = rand.nextInt(1,7);
+            dieSum = die1 + die2;
+
             System.out.print("\nYou roll two dice!");
             if (dieSum == 2 || dieSum == 3 || dieSum == 12) {   //crapping out
                 System.out.printf("\nYour first roll was %d and your second roll was %d. Your combined roll was %d", die1, die2, dieSum);
@@ -68,7 +69,13 @@ public class CrapsGame {
             if (!(userAnswer.equalsIgnoreCase("Y"))) {
                 playAgain = false;
             }
-
+            else { //reinitializes variables
+                die1 = 0;
+                die2 = 0;
+                dieSum = 0;
+                userAnswer = "";
+                System.out.print("\n");
+            }
         } while (playAgain);
     }
 }
